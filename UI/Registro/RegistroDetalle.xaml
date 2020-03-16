@@ -1,0 +1,114 @@
+﻿<Window x:Class="SegundoParcial_AdrianMendez.UI.Registro.RegistroDetalle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SegundoParcial_AdrianMendez.UI.Registro"
+        xmlns:validaciones="clr-namespace:SegundoParcial_AdrianMendez.UI.Validaciones"
+        mc:Ignorable="d"
+        Title="RegistroDetalle" Height="450" Width="410">
+
+    <Grid x:Name="RegistroOrdenGrid">
+
+        <GroupBox Header="Label Id" Margin="20,146,40,79"/>
+
+        <Label Content="Label Id" HorizontalAlignment="Left" Margin="30,79,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="IdTextBox" HorizontalAlignment="Right" Margin="0,83,117,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <Binding Path="orden.OrdenId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnSourceUpdated="True" NotifyOnTargetUpdated="True" >
+                <Binding.ValidationRules>
+                    <ExceptionValidationRule/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+
+        <Button  x:Name="BuscarButton" Click="BuscarButton_Click" Height="30" HorizontalAlignment="Right" Margin="0,77,50,0" VerticalAlignment="Top">
+            <Button.Content>
+                <DockPanel>
+                    <Image Source="/Resources/busqueda.png"/>
+                    <TextBlock VerticalAlignment="Center" Text="Buscar"/>
+                </DockPanel>
+
+            </Button.Content>
+        </Button>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="30,110,0,0" VerticalAlignment="Top"/>
+        <TextBox  HorizontalAlignment="Right" Margin="0,114,50,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168">
+            <Binding Path="orden.ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnSourceUpdated="True" NotifyOnTargetUpdated="True" >
+                <Binding.ValidationRules>
+                    <ExceptionValidationRule/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+        <TextBox x:Name="ItemIdTextBox"  TextChanged="ItemIdTextBox_TextChanged" HorizontalAlignment="Right" Margin="0,146,119,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="99">
+            <Binding Path="ProductoId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnSourceUpdated="True" NotifyOnTargetUpdated="True" >
+                <Binding.ValidationRules>
+                    <ExceptionValidationRule/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+
+        <Button  x:Name="AgregarProductoButton"  Click="AgregarProductoButton_Click" Height="26" HorizontalAlignment="Right" Margin="0,142,46,0" VerticalAlignment="Top">
+            <Button.Content>
+                <DockPanel>
+                    <Image Source="/Resources/boton-anadir.png"/>
+                    <TextBlock VerticalAlignment="Center" Text="Agregar"/>
+                </DockPanel>
+
+            </Button.Content>
+        </Button>
+
+        <DataGrid x:Name="ItemsDataGrid" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False" Margin="30,214,50,114" ItemsSource="{Binding orden.DetalleProductos, Mode=TwoWay, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Descripción" Binding="{Binding }" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button  x:Name="EliminarItemButton" Click="EliminarItemButton_Click" Margin="30,0,0,92" Height="20" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Button.Content>
+                <DockPanel>
+                    <Image Source="/Resources/papelera-de-reciclaje.png"/>
+                    <TextBlock VerticalAlignment="Center" Text="Eliminar Fila"/>
+                </DockPanel>
+            </Button.Content>
+        </Button>
+        <Label Content="Descripción del Id" HorizontalAlignment="Left" Margin="30,173,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="DescripcionItemTextBox" HorizontalAlignment="Right" Margin="0,177,50,0" IsReadOnly="True" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="168"/>
+
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="248" Margin="0,0,0,23" Height="30">
+
+
+            <Button  x:Name="NuevoButton" Click="NuevoButton_Click" HorizontalAlignment="Left">
+                <Button.Content>
+                    <DockPanel>
+                        <Image Source="/Resources/boton-anadir.png"/>
+                        <TextBlock VerticalAlignment="Center" Text="Nuevo"/>
+                    </DockPanel>
+                </Button.Content>
+            </Button>
+
+            <Button  x:Name="GuardarButton" Click="GuardarButton_Click" HorizontalAlignment="Center">
+                <Button.Content>
+                    <DockPanel>
+                        <Image Source="/Resources/guardar.png"/>
+                        <TextBlock VerticalAlignment="Center" Text="Guardar"/>
+                    </DockPanel>
+
+                </Button.Content>
+            </Button>
+
+
+            <Button  x:Name="EliminarButton" Click="EliminarButton_Click" HorizontalAlignment="Right">
+                <Button.Content>
+                    <DockPanel>
+                        <Image Source="/Resources/papelera-de-reciclaje.png"/>
+                        <TextBlock VerticalAlignment="Center" Text="Eliminar"/>
+                    </DockPanel>
+
+                </Button.Content>
+            </Button>
+
+        </Grid>
+
+
+    </Grid>
+
+</Window>
